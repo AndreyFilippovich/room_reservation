@@ -39,3 +39,11 @@ async def get_room_id_by_name(
     )
     db_room_id = db_room_id.scalars().first()
     return db_room_id
+
+
+# Считывает из базы данных все переговорки
+async def read_all_rooms_from_db(
+        session: AsyncSession,
+) -> list[MeetingRoom]:
+    db_rooms = await session.execute(select(MeetingRoom))
+    return db_rooms.scalars().all()
