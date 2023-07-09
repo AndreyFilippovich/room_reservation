@@ -1,11 +1,10 @@
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends
 
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.api.validators import check_meeting_room_exists, check_name_duplicate
 from app.core.db import get_async_session
 from app.crud.meeting_room import meeting_room_crud
-from app.models.meeting_room import MeetingRoom
 from app.schemas.meeting_room import (
     MeetingRoomCreate, MeetingRoomDB, MeetingRoomUpdate
 )
